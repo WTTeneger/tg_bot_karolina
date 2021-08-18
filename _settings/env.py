@@ -9,3 +9,4 @@ DB_CHARSET = 'utf8mb4'
 #tg коды
 
 tg_token = ('1972026849:AAFKrHM0uxFPnxgU6_Hczi07hgr-i2vUTBE')
+

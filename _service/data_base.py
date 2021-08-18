@@ -1,5 +1,5 @@
 import pymysql
-from _settings import env
+from decouple import config
 # print()
 
 class DB():
@@ -16,8 +16,8 @@ class DB():
     def GET(self):
         """Получает данные с Базы данных
         """
-        connection = pymysql.connect(host=env.DB_HOST, user=env.DB_USER,
-                                     password=env.DB_PASSWORD, database=env.DB_DATABASE, charset=env.DB_CHARSET)
+        connection = pymysql.connect(host=config("DB_HOST"), user=config("DB_USER"),
+                                     password=config("DB_PASSWORD"), database=config("DB_DATABASE"), charset=config("DB_CHARSET"))
         cursor = connection.cursor()
         cursor.execute(self)
         OTV = cursor.fetchall()
@@ -26,12 +26,12 @@ class DB():
     def POST(self):
         """Отправляет данные в Базу данных
         """
-        connection = pymysql.connect(host=env.DB_HOST, user=env.DB_USER,
-                                     password=env.DB_PASSWORD, database=env.DB_DATABASE, charset=env.DB_CHARSET)
+        connection = pymysql.connect(host=config("DB_HOST"), user=config("DB_USER"),
+                                     password=config("DB_PASSWORD"), database=config("DB_DATABASE"), charset=config("DB_CHARSET"))
         cursor = connection.cursor()
         cursor.execute(self)
         connection.commit()
         return('True')
     
 def test():
-    print(env.DB_DATABASE)
+    print(config('DB_DATABASE'))
