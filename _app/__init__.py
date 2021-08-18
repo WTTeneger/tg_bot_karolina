@@ -3,6 +3,7 @@ import os
 import random
 import threading
 import time
+import schedule
 
 import telebot
 from telebot import types
