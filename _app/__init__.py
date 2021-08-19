@@ -4,6 +4,9 @@ import random
 import threading
 import time
 import schedule
+from collections import namedtuple
+
+
 
 import telebot
 from telebot import types
@@ -14,3 +17,4 @@ from decouple import config
 bot = telebot.TeleBot(config('tg_token'))
 
 from _app import buttons, tg
+person = namedtuple('per', ['name', 'age', 'sex'])
